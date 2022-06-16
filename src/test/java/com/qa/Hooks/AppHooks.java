@@ -35,9 +35,9 @@ public class AppHooks {
 		driver = driverFactory.initialiseBrowser(browserName);
 	}
 
-/*	@After(order = 0)
+	/*@After(order = 0)
 	public void quitBrowser() {
-
+		driver.close();
 		driver.quit();
 	}*/
 
@@ -49,8 +49,9 @@ public class AppHooks {
 			String screenshotName = sc.getName().replaceAll(" ", "_");
 			byte[] sourcePath = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
 			sc.attach(sourcePath, "image/png", screenshotName);
+
 		}
 		Thread.sleep(3000);
-		driver.quit();
+	
 	}*/
 }

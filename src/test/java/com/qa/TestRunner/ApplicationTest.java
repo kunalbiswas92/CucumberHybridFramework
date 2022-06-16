@@ -7,7 +7,7 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-	features = {"src/resources/java/com/qa/featureFiles"},
+	features = {"src/resources/java/com/qa/featureFiles/AccountPage.feature"},
 	glue = { "com.qa.StepDefinitions" ,"com.qa.Hooks"},
 	plugin = {"pretty"}	,
 	monochrome = true,

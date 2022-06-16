@@ -15,7 +15,7 @@ public class LandingPage {
 		this.driver=driver;
 	}
 	
-	public String getTitle()
+	public String getLandingPageTitle()
 	{
 		 ActualTitle = driver.getTitle();
 		 return ActualTitle;
@@ -27,10 +27,11 @@ public class LandingPage {
 		return isSignInLinkDisplayed;
 	}
 	
-	public void clickOnSignInlink() throws InterruptedException
+	public LoginPage clickOnSignInlink() throws InterruptedException
 	{
 		driver.findElement(signInLink).click();
 		Thread.sleep(2000);
+		return new LoginPage(driver);
 	}
 		
 

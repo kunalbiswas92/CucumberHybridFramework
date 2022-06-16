@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import com.qa.ConfigurationReader.configReader;
 import com.qa.Factory.DriverFactory;
 import com.qa.Hooks.AppHooks;
+import com.qa.Pages.AccountsPage;
 import com.qa.Pages.LandingPage;
 import com.qa.Pages.LoginPage;
 
@@ -24,7 +25,8 @@ public class LoginPageSteps {
 	Properties prop;
 
 	LandingPage landing = new LandingPage(DriverFactory.getDriver());
-	LoginPage login = new LoginPage(DriverFactory.getDriver());
+	LoginPage login ;
+	AccountsPage account;
 
 	@Given("user lanches the application URL")
 	public void user_lanches_the_application_url() {
@@ -34,7 +36,7 @@ public class LoginPageSteps {
 
 	@Given("lands on home page with title {string}")
 	public void lands_on_home_page_with_title(String ExpectedString) {
-		String ActualTitle = landing.getTitle();
+		String ActualTitle = landing.getLandingPageTitle();
 		Assert.assertEquals(ExpectedString, ActualTitle);
 	}
 
@@ -45,13 +47,11 @@ public class LoginPageSteps {
 	}
 
 	@When("user clicks on sign in button on home page")
-	public void user_clicks_on_sign_in_button_on_home_page() {
-		try {
-			landing.clickOnSignInlink();
-		} catch (InterruptedException e) {
-			System.out.println("Element is not found");
-			e.printStackTrace();
-		}
+	public void user_clicks_on_sign_in_button_on_home_page() throws InterruptedException {
+	
+			login = landing.clickOnSignInlink();
+		
+		
 	}
 
 	@When("is directed to the login page with title {string}")
@@ -61,10 +61,10 @@ public class LoginPageSteps {
 	}
 
 	@Then("^user enters the correct username \"([^\"]*)\" and password \"([^\"]*)\"$")
-	public void user_enters_the_correct_username_something_and_password_something(String username, String password)
-			throws Throwable {
+	public void user_enters_the_correct_username_something_and_password_something(String username, String password) throws InterruptedException
+			{
 		
-		login.enterLoginCredentials(username, password);
+		 account = login.enterLoginCredentials(username, password);
 	}
 
 	@Then("^logs into the account with page title \"([^\"]*)\"$")

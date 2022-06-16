@@ -20,12 +20,13 @@ public class LoginPage {
 		return actualTitle;
 	}
 	
-	public void enterLoginCredentials(String username , String password) throws InterruptedException
+	public AccountsPage enterLoginCredentials(String username , String password) throws InterruptedException
 	{
 		driver.findElement(emailTxtField).sendKeys(username);
 		driver.findElement(passwordTxtField).sendKeys(password);
 		driver.findElement(signInButton).click();
 		Thread.sleep(4000);
+		return new AccountsPage(driver);
 	}
 
 }
